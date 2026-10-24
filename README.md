@@ -16,16 +16,15 @@ Prometheus
 Grafana
 ArgoCD
 Project Progress
-
 ✅ Phase 0 - AWS Setup
 
 ✅ Phase 1 - Linux Fundamentals
 
 ✅ Phase 2 - Git & GitHub
 
-✅ Phase 3 - Application Setup
+🔄 Phase 3 - Application Setup
 
-🔄 Phase 4 - Docker
+⬜ Phase 4 - Docker
 
 ⬜ Phase 5 - CI/CD
 
@@ -41,6 +40,4 @@ Project Progress
 
 ⬜ Phase 11 - Ansible
 
-⬜ Phase 12 - Final Showcase✅ Phase 0 - AWS Setup
-
-
+⬜ Phase 12 - Final Project Showcase
