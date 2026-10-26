@@ -1,0 +1,10 @@
+services:
+
+  web:
+
+    image: salman-web:v2
+
+    container_name: salman-compose-web
+
+    ports:
+      - "80:80"
