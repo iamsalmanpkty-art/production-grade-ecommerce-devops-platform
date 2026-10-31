@@ -1,4 +1,4 @@
-name: Debug Secrets
+name: Test EC2 Connectivity
 
 on:
   push:
@@ -6,33 +6,16 @@ on:
       - main
 
 jobs:
-  debug:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check host exists
+      - name: Install tools
         run: |
-          if [ -z "${{ secrets.EC2_HOST }}" ]; then
-            echo "EC2_HOST is EMPTY"
-            exit 1
-          else
-            echo "EC2_HOST exists"
-          fi
+          sudo apt-get update
+          sudo apt-get install -y netcat-openbsd
 
-      - name: Check user exists
+      - name: Test Port 22
         run: |
-          if [ -z "${{ secrets.EC2_USER }}" ]; then
-            echo "EC2_USER is EMPTY"
-            exit 1
-          else
-            echo "EC2_USER exists"
-          fi
+          nc -vz ${{ secrets.EC2_HOST }} 22
 
-      - name: Check key exists
-        run: |
-          if [ -z "${{ secrets.EC2_SSH_KEY }}" ]; then
-            echo "EC2_SSH_KEY is EMPTY"
-            exit 1
-          else
-            echo "EC2_SSH_KEY exists"
-          fi
