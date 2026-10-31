@@ -1,4 +1,4 @@
-name: Test EC2 Connectivity
+name: CI-CD Pipeline
 
 on:
   push:
@@ -6,16 +6,17 @@ on:
       - main
 
 jobs:
-  test:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Install tools
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y netcat-openbsd
-
-      - name: Test Port 22
-        run: |
-          nc -vz ${{ secrets.EC2_HOST }} 22
-
+      - name: Deploy to EC2
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_SSH_KEY }}
+          script: |
+            echo "Connected Successfully"
+            hostname
+            pwd
